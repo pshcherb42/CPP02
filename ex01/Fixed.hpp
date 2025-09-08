@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 class Fixed {
     private:
@@ -6,18 +7,17 @@ class Fixed {
         static const int _base = 8;
     public:
         Fixed(); // default constructor
+        Fixed( int const param ); // integer constructor
+        Fixed( float const num); // float constructor
         Fixed(const Fixed &copy); // copy constructor
-        // Fixed( int const param ); 
-        // Fixed( float const num);
         Fixed &operator=(const Fixed &other); // assigment operator
         // ex00
         int getRawBits( void ) const;
         void setRawBits( int const raw);
         // ex01
-        /*
-        void constructorInt( int const raw? ); // converts int to fixed point
-        void constructorFloat( float const num ); // converts float to fixed point
-        flo
-        */
+        float toFloat( void ) const; // converts fixed-point to float
+        int toInt( void ) const; // converts fixed to int
         ~Fixed(); // Destructor
 };
+
+std::ostream& operator<<(std::ostream& os, const Fixed& obj); // overload << operator
